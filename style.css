@@ -637,3 +637,17 @@ section[id] { scroll-margin-top: 96px; }
 @media (prefers-reduced-motion: reduce) {
   .reveal-pending, .reveal-visible { opacity: 1; transform: none; transition: none; }
 }
+
+/* Acessibilidade: foco visivel para teclado */
+:focus-visible {
+  outline: 3px solid #63e6be;
+  outline-offset: 4px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  scroll-margin-block: 1rem;
+}
