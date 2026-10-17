@@ -1,369 +1,380 @@
-# NexTech — Projeto de Web Design
+# NexTech â€” Projeto de Web Design
 
-> Projeto acadêmico demonstrativo criado com HTML semântico, CSS responsivo e JavaScript puro.
+> Projeto acadÃªmico demonstrativo criado com HTML semÃ¢ntico, CSS responsivo e JavaScript puro.
 
-## 1. Visão geral
+## 1. VisÃ£o geral
 
-A NexTech é uma página institucional conceitual para apresentar serviços digitais.
-O projeto usa arquivos separados para estrutura, aparência e comportamento, conforme
+A NexTech Ã© uma pÃ¡gina institucional conceitual para apresentar serviÃ§os digitais.
+O projeto usa arquivos separados para estrutura, aparÃªncia e comportamento, conforme
 os requisitos da atividade de Web Design.
 
-A proposta visual é original e foi inspirada no tipo de site institucional presente
-no repositório de referência, sem copiar literalmente sua implementação.
+A proposta visual Ã© original e foi inspirada no tipo de site institucional presente
+no repositÃ³rio de referÃªncia, sem copiar literalmente sua implementaÃ§Ã£o.
 
 ## 2. Tecnologias utilizadas
 
-- HTML5 semântico.
+- HTML5 semÃ¢ntico.
 - CSS3, Grid, Flexbox e media queries.
 - JavaScript puro, sem bibliotecas externas.
-- `localStorage` para guardar a preferência de tema.
-- `IntersectionObserver` para navegação ativa e efeitos progressivos.
-- Git e GitHub para versionamento e publicação.
+- `localStorage` para guardar a preferÃªncia de tema.
+- `IntersectionObserver` para navegaÃ§Ã£o ativa e efeitos progressivos.
+- Git e GitHub para versionamento e publicaÃ§Ã£o.
 
 ## 3. Estrutura de arquivos
 
-- `index.html`: conteúdo e estrutura da página.
+- `index.html`: conteÃºdo e estrutura da pÃ¡gina.
 - `style.css`: tokens de design, componentes, layout e responsividade.
-- `script.js`: interações, validações e eventos.
-- `README.md`: descrição funcional e instruções.
-- `docs/RELATORIO_ENTREGA.md`: relatório para apoiar a documentação da entrega.
+- `script.js`: interaÃ§Ãµes, validaÃ§Ãµes e eventos.
+- `README.md`: descriÃ§Ã£o funcional e instruÃ§Ãµes.
+- `docs/RELATORIO_ENTREGA.md`: relatÃ³rio para apoiar a documentaÃ§Ã£o da entrega.
 - `docs/CAPTURAS.md`: roteiro para registrar capturas reais de tela.
 
 ## 4. Funcionalidades em JavaScript
 
 ### 4.1 Menu responsivo
-O botão de menu abre e fecha a navegação em telas menores.
-O estado é comunicado pelo atributo `aria-expanded`.
-O menu também fecha após selecionar um link, pressionar Escape ou clicar fora dele.
+O botÃ£o de menu abre e fecha a navegaÃ§Ã£o em telas menores.
+O estado Ã© comunicado pelo atributo `aria-expanded`.
+O menu tambÃ©m fecha apÃ³s selecionar um link, pressionar Escape ou clicar fora dele.
 
 ### 4.2 Tema claro e escuro
-O botão Tema alterna a aparência entre claro e escuro.
-A preferência é salva no armazenamento local do navegador.
-Na primeira visita, a página considera a preferência do sistema operacional.
+O botÃ£o Tema alterna a aparÃªncia entre claro e escuro.
+A preferÃªncia Ã© salva no armazenamento local do navegador.
+Na primeira visita, a pÃ¡gina considera a preferÃªncia do sistema operacional.
 
-### 4.3 Filtro de serviços
-Os botões Todos, Web, Processos e Estratégia filtram os cartões.
-Os cartões que não correspondem à categoria selecionada são ocultados.
-O botão selecionado recebe estado visual e `aria-pressed`.
+### 4.3 Filtro de serviÃ§os
+Os botÃµes Todos, Web, Processos e EstratÃ©gia filtram os cartÃµes.
+Os cartÃµes que nÃ£o correspondem Ã  categoria selecionada sÃ£o ocultados.
+O botÃ£o selecionado recebe estado visual e `aria-pressed`.
 
 ### 4.4 Perguntas frequentes
 Cada pergunta abre ou fecha sua resposta.
-O atributo `aria-expanded` é atualizado conforme o estado.
-O componente usa botões reais, permitindo interação por teclado.
+O atributo `aria-expanded` Ã© atualizado conforme o estado.
+O componente usa botÃµes reais, permitindo interaÃ§Ã£o por teclado.
 
-### 4.5 Validação de formulário
-O formulário verifica nome, e-mail, mensagem e consentimento.
-As mensagens de erro aparecem próximas aos campos correspondentes.
-O navegador recebe o foco no primeiro campo inválido.
-A demonstração não transmite dados nem finge que houve envio real.
+### 4.5 ValidaÃ§Ã£o de formulÃ¡rio
+O formulÃ¡rio verifica nome, e-mail, mensagem e consentimento.
+As mensagens de erro aparecem prÃ³ximas aos campos correspondentes.
+O navegador recebe o foco no primeiro campo invÃ¡lido.
+A demonstraÃ§Ã£o nÃ£o transmite dados nem finge que houve envio real.
 
 ### 4.6 Contador de caracteres
 O contador acompanha o texto digitado na mensagem.
-O campo é limitado a 500 caracteres.
-A contagem ajuda a pessoa a perceber quando está perto do limite.
+O campo Ã© limitado a 500 caracteres.
+A contagem ajuda a pessoa a perceber quando estÃ¡ perto do limite.
 
-### 4.7 Pré-preenchimento do assunto
-Os links nos cartões de serviços preenchem o campo de mensagem.
-Depois de preencher, a página conduz a pessoa até o formulário.
-Esse comportamento demonstra manipulação do DOM e eventos de clique.
+### 4.7 PrÃ©-preenchimento do assunto
+Os links nos cartÃµes de serviÃ§os preenchem o campo de mensagem.
+Depois de preencher, a pÃ¡gina conduz a pessoa atÃ© o formulÃ¡rio.
+Esse comportamento demonstra manipulaÃ§Ã£o do DOM e eventos de clique.
 
-### 4.8 Botão voltar ao topo
-O botão aparece após a pessoa rolar a página.
-Ao clicar, a página retorna suavemente ao início.
-A preferência por movimento reduzido é respeitada.
+### 4.8 BotÃ£o voltar ao topo
+O botÃ£o aparece apÃ³s a pessoa rolar a pÃ¡gina.
+Ao clicar, a pÃ¡gina retorna suavemente ao inÃ­cio.
+A preferÃªncia por movimento reduzido Ã© respeitada.
 
-### 4.9 Ano automático
-O ano do rodapé é atualizado com a data atual do navegador.
+### 4.9 Ano automÃ¡tico
+O ano do rodapÃ© Ã© atualizado com a data atual do navegador.
 Isso evita a necessidade de atualizar manualmente o texto todo ano.
 
-### 4.10 Navegação ativa
-A seção visível pode destacar o link correspondente no menu.
+### 4.10 NavegaÃ§Ã£o ativa
+A seÃ§Ã£o visÃ­vel pode destacar o link correspondente no menu.
 O recurso usa `IntersectionObserver` quando o navegador oferece suporte.
 
 ### 4.11 Efeitos de entrada
-Cartões e itens podem surgir gradualmente quando entram na área visível.
-O recurso é desativado quando o sistema solicita movimento reduzido.
-Se `IntersectionObserver` não existir, o conteúdo continua disponível.
+CartÃµes e itens podem surgir gradualmente quando entram na Ã¡rea visÃ­vel.
+O recurso Ã© desativado quando o sistema solicita movimento reduzido.
+Se `IntersectionObserver` nÃ£o existir, o conteÃºdo continua disponÃ­vel.
 
-### 4.12 Mensagens acessíveis
-Uma região `aria-live` anuncia ações relevantes.
-Isso melhora a comunicação de mudanças para leitores de tela.
+### 4.12 Mensagens acessÃ­veis
+Uma regiÃ£o `aria-live` anuncia aÃ§Ãµes relevantes.
+Isso melhora a comunicaÃ§Ã£o de mudanÃ§as para leitores de tela.
 
 ## 5. Como executar
 
 1. Extraia o arquivo ZIP para uma pasta.
 2. Abra essa pasta no Visual Studio Code.
 3. Abra `index.html` no navegador.
-4. Para uma experiência de desenvolvimento mais confortável, use uma extensão local de servidor estático.
+4. Para uma experiÃªncia de desenvolvimento mais confortÃ¡vel, use uma extensÃ£o local de servidor estÃ¡tico.
 5. Teste o site em largura de desktop e celular.
 6. Confira o console do navegador para identificar eventuais erros.
 
-O projeto não precisa de `npm install` nem de compilação.
+O projeto nÃ£o precisa de `npm install` nem de compilaÃ§Ã£o.
 
 ## 6. Como testar as funcionalidades
 
 - Abra e feche o menu em uma janela estreita.
-- Alterne entre tema claro e escuro e atualize a página.
-- Selecione cada categoria de serviços.
-- Abra duas perguntas frequentes, verificando o comportamento do acordeão.
-- Envie o formulário vazio para conferir as validações.
-- Preencha nome, e-mail válido, mensagem com 10 ou mais caracteres e confirmação.
-- Clique em um link de serviço e confira o assunto pré-preenchido.
-- Role a página e use o botão de retorno ao topo.
-- Verifique se o ano do rodapé corresponde ao ano atual.
-- Use Tab, Shift+Tab, Enter, Espaço e Escape para testar a navegação por teclado.
+- Alterne entre tema claro e escuro e atualize a pÃ¡gina.
+- Selecione cada categoria de serviÃ§os.
+- Abra duas perguntas frequentes, verificando o comportamento do acordeÃ£o.
+- Envie o formulÃ¡rio vazio para conferir as validaÃ§Ãµes.
+- Preencha nome, e-mail vÃ¡lido, mensagem com 10 ou mais caracteres e confirmaÃ§Ã£o.
+- Clique em um link de serviÃ§o e confira o assunto prÃ©-preenchido.
+- Role a pÃ¡gina e use o botÃ£o de retorno ao topo.
+- Verifique se o ano do rodapÃ© corresponde ao ano atual.
+- Use Tab, Shift+Tab, Enter, EspaÃ§o e Escape para testar a navegaÃ§Ã£o por teclado.
 
 ## 7. Acessibilidade considerada
 
-- Elementos semânticos como `header`, `nav`, `main`, `section`, `form` e `footer`.
-- Link para pular diretamente ao conteúdo principal.
-- Rótulos associados aos campos por `for` e `id`.
-- Texto alternativo ou rótulos acessíveis para controles.
+- Elementos semÃ¢nticos como `header`, `nav`, `main`, `section`, `form` e `footer`.
+- Link para pular diretamente ao conteÃºdo principal.
+- RÃ³tulos associados aos campos por `for` e `id`.
+- Texto alternativo ou rÃ³tulos acessÃ­veis para controles.
 - Estados `aria-expanded`, `aria-pressed`, `aria-current` e `aria-live`.
-- Foco visível para navegação por teclado.
-- Respeito à preferência por movimento reduzido.
-- Mensagens de validação próximas aos campos.
+- Foco visÃ­vel para navegaÃ§Ã£o por teclado.
+- Respeito Ã  preferÃªncia por movimento reduzido.
+- Mensagens de validaÃ§Ã£o prÃ³ximas aos campos.
 
 ## 8. Responsividade
 
 - Layout em colunas no desktop.
-- Redução gradual de colunas em tablets.
-- Navegação móvel com botão de menu.
-- Cartões em coluna única em celulares estreitos.
-- Formulário e rodapé adaptados para telas pequenas.
-- Espaçamentos ajustados por media queries.
+- ReduÃ§Ã£o gradual de colunas em tablets.
+- NavegaÃ§Ã£o mÃ³vel com botÃ£o de menu.
+- CartÃµes em coluna Ãºnica em celulares estreitos.
+- FormulÃ¡rio e rodapÃ© adaptados para telas pequenas.
+- EspaÃ§amentos ajustados por media queries.
 
-## 9. Observações sobre o formulário
+## 9. ObservaÃ§Ãµes sobre o formulÃ¡rio
 
-O formulário é exclusivamente demonstrativo.
-A validação ocorre no navegador e não há integração com servidor.
-Não informe dados sensíveis ao testar.
-Para transformar o formulário em contato real, será necessário configurar um backend
-ou um serviço de formulários e revisar as práticas de privacidade.
+O formulÃ¡rio Ã© exclusivamente demonstrativo.
+A validaÃ§Ã£o ocorre no navegador e nÃ£o hÃ¡ integraÃ§Ã£o com servidor.
+NÃ£o informe dados sensÃ­veis ao testar.
+Para transformar o formulÃ¡rio em contato real, serÃ¡ necessÃ¡rio configurar um backend
+ou um serviÃ§o de formulÃ¡rios e revisar as prÃ¡ticas de privacidade.
 
-## 10. Publicação com Git e GitHub
+## 10. PublicaÃ§Ã£o com Git e GitHub
 
-1. Crie ou abra o repositório que será usado para a atividade.
-2. Confirme que a pasta aberta contém os arquivos do projeto.
-3. Inicialize o versionamento apenas se a pasta ainda não tiver `.git`.
-4. Faça um commit com uma mensagem descritiva.
-5. Configure o remoto para o repositório correto.
-6. Compare o histórico local com o remoto antes de sincronizar.
-7. Publique a branch `main` quando a configuração estiver correta.
-8. Confira os arquivos no GitHub após o envio.
-9. Se utilizar GitHub Pages, configure a publicação nas definições do repositório.
-10. Guarde capturas reais de tela para demonstrar a versão local e publicada.
+1. Crie ou abra o repositÃ³rio que serÃ¡ usado para a atividade.
+2. Confirme que a pasta aberta contÃ©m os arquivos do projeto.
+3. Inicialize o versionamento apenas se a pasta ainda nÃ£o tiver `.git`.
+4. FaÃ§a um commit com uma mensagem descritiva.
+5. Configure o remoto para o repositÃ³rio correto.
+6. Compare o histÃ³rico local com o remoto antes de sincronizar.
+7. Publique a branch `main` quando a configuraÃ§Ã£o estiver correta.
+8. Confira os arquivos no GitHub apÃ³s o envio.
+9. Se utilizar GitHub Pages, configure a publicaÃ§Ã£o nas definiÃ§Ãµes do repositÃ³rio.
+10. Guarde capturas reais de tela para demonstrar a versÃ£o local e publicada.
 
-## 11. Referência
+## 11. ReferÃªncia
 
-Repositório consultado como referência de estrutura e contexto de atividade:
+RepositÃ³rio consultado como referÃªncia de estrutura e contexto de atividade:
 https://github.com/Agudinho/Atividade-6-Web-Design
 
-Este projeto é uma implementação independente e não declara afiliação com o autor
-do repositório de referência.
+Este projeto Ã© uma implementaÃ§Ã£o independente e nÃ£o declara afiliaÃ§Ã£o com o autor
+do repositÃ³rio de referÃªncia.
 
 ## 12. Checklist antes da entrega
 
-- [ ] `index.html` contém mais de 500 linhas.
-- [ ] `style.css` contém mais de 400 linhas.
-- [ ] `script.js` contém mais de 300 linhas.
-- [ ] O JavaScript é carregado externamente por `script.js`.
+- [ ] `index.html` contÃ©m mais de 500 linhas.
+- [ ] `style.css` contÃ©m mais de 400 linhas.
+- [ ] `script.js` contÃ©m mais de 300 linhas.
+- [ ] O JavaScript Ã© carregado externamente por `script.js`.
 - [ ] O README possui mais de 100 linhas.
 - [ ] Foram testados os filtros e o tema.
 - [ ] Foram testadas as perguntas frequentes.
-- [ ] Foram testados os cenários válido e inválido do formulário.
+- [ ] Foram testados os cenÃ¡rios vÃ¡lido e invÃ¡lido do formulÃ¡rio.
 - [ ] O layout foi testado em desktop e celular.
-- [ ] O repositório foi conferido após o push.
-- [ ] As capturas reais foram incluídas na documentação de entrega.
+- [ ] O repositÃ³rio foi conferido apÃ³s o push.
+- [ ] As capturas reais foram incluÃ­das na documentaÃ§Ã£o de entrega.
 
 ## 13. Limites conhecidos
 
-- O formulário não envia mensagens para um servidor.
-- Os projetos apresentados são conceitos ilustrativos.
-- A aparência pode variar ligeiramente entre navegadores.
-- A validação do lado do cliente é educativa e não substitui validação no servidor.
-- A publicação no GitHub precisa ser executada com a conta e o repositório do estudante.
+- O formulÃ¡rio nÃ£o envia mensagens para um servidor.
+- Os projetos apresentados sÃ£o conceitos ilustrativos.
+- A aparÃªncia pode variar ligeiramente entre navegadores.
+- A validaÃ§Ã£o do lado do cliente Ã© educativa e nÃ£o substitui validaÃ§Ã£o no servidor.
+- A publicaÃ§Ã£o no GitHub precisa ser executada com a conta e o repositÃ³rio do estudante.
 
-## 14. Conclusão
+## 14. ConclusÃ£o
 
-O projeto demonstra a separação entre HTML, CSS e JavaScript, a construção de
-uma interface responsiva e a implementação de interações comuns em sites institucionais.
-A documentação lista o propósito das funcionalidades e oferece uma sequência de testes.
+O projeto demonstra a separaÃ§Ã£o entre HTML, CSS e JavaScript, a construÃ§Ã£o de
+uma interface responsiva e a implementaÃ§Ã£o de interaÃ§Ãµes comuns em sites institucionais.
+A documentaÃ§Ã£o lista o propÃ³sito das funcionalidades e oferece uma sequÃªncia de testes.
 
-## 15. Registro de revisão por componente
+## 15. Registro de revisÃ£o por componente
 
 
-### Revisão 01 — Cabeçalho e navegação
+### RevisÃ£o 01 â€” CabeÃ§alho e navegaÃ§Ã£o
 
-- Confirmar que o componente **cabeçalho e navegação** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **cabeÃ§alho e navegaÃ§Ã£o** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 02 — Identidade visual
+### RevisÃ£o 02 â€” Identidade visual
 
-- Confirmar que o componente **identidade visual** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **identidade visual** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 03 — Hero e chamada principal
+### RevisÃ£o 03 â€” Hero e chamada principal
 
-- Confirmar que o componente **hero e chamada principal** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **hero e chamada principal** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 04 — Faixa de princípios
+### RevisÃ£o 04 â€” Faixa de princÃ­pios
 
-- Confirmar que o componente **faixa de princípios** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **faixa de princÃ­pios** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 05 — Cartões de serviço
+### RevisÃ£o 05 â€” CartÃµes de serviÃ§o
 
-- Confirmar que o componente **cartões de serviço** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **cartÃµes de serviÃ§o** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 06 — Filtros de serviço
+### RevisÃ£o 06 â€” Filtros de serviÃ§o
 
-- Confirmar que o componente **filtros de serviço** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **filtros de serviÃ§o** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 07 — Ilustrações de projetos
+### RevisÃ£o 07 â€” IlustraÃ§Ãµes de projetos
 
-- Confirmar que o componente **ilustrações de projetos** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **ilustraÃ§Ãµes de projetos** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 08 — Etapas do processo
+### RevisÃ£o 08 â€” Etapas do processo
 
-- Confirmar que o componente **etapas do processo** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **etapas do processo** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 09 — Princípios de design
+### RevisÃ£o 09 â€” PrincÃ­pios de design
 
-- Confirmar que o componente **princípios de design** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **princÃ­pios de design** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 10 — Acordeão de perguntas
+### RevisÃ£o 10 â€” AcordeÃ£o de perguntas
 
-- Confirmar que o componente **acordeão de perguntas** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **acordeÃ£o de perguntas** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 11 — Formulário de contato
+### RevisÃ£o 11 â€” FormulÃ¡rio de contato
 
-- Confirmar que o componente **formulário de contato** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **formulÃ¡rio de contato** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 12 — Validação de campos
+### RevisÃ£o 12 â€” ValidaÃ§Ã£o de campos
 
-- Confirmar que o componente **validação de campos** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **validaÃ§Ã£o de campos** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 13 — Contador de caracteres
+### RevisÃ£o 13 â€” Contador de caracteres
 
-- Confirmar que o componente **contador de caracteres** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **contador de caracteres** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 14 — Tema claro e escuro
+### RevisÃ£o 14 â€” Tema claro e escuro
 
-- Confirmar que o componente **tema claro e escuro** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **tema claro e escuro** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 15 — Persistência de preferências
+### RevisÃ£o 15 â€” PersistÃªncia de preferÃªncias
 
-- Confirmar que o componente **persistência de preferências** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **persistÃªncia de preferÃªncias** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 16 — Menu em dispositivos móveis
+### RevisÃ£o 16 â€” Menu em dispositivos mÃ³veis
 
-- Confirmar que o componente **menu em dispositivos móveis** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **menu em dispositivos mÃ³veis** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 17 — Estados de foco
+### RevisÃ£o 17 â€” Estados de foco
 
-- Confirmar que o componente **estados de foco** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **estados de foco** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 18 — Mensagens acessíveis
+### RevisÃ£o 18 â€” Mensagens acessÃ­veis
 
-- Confirmar que o componente **mensagens acessíveis** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **mensagens acessÃ­veis** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 19 — Navegação ativa
+### RevisÃ£o 19 â€” NavegaÃ§Ã£o ativa
 
-- Confirmar que o componente **navegação ativa** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **navegaÃ§Ã£o ativa** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 20 — Botão voltar ao topo
+### RevisÃ£o 20 â€” BotÃ£o voltar ao topo
 
-- Confirmar que o componente **botão voltar ao topo** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **botÃ£o voltar ao topo** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 21 — Rodapé
+### RevisÃ£o 21 â€” RodapÃ©
 
-- Confirmar que o componente **rodapé** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **rodapÃ©** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 22 — Media queries
+### RevisÃ£o 22 â€” Media queries
 
-- Confirmar que o componente **media queries** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **media queries** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 23 — Preferência por movimento reduzido
+### RevisÃ£o 23 â€” PreferÃªncia por movimento reduzido
 
-- Confirmar que o componente **preferência por movimento reduzido** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **preferÃªncia por movimento reduzido** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 24 — Documentação de uso
+### RevisÃ£o 24 â€” DocumentaÃ§Ã£o de uso
 
-- Confirmar que o componente **documentação de uso** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **documentaÃ§Ã£o de uso** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
 
-### Revisão 25 — Checklist de entrega
+### RevisÃ£o 25 â€” Checklist de entrega
 
-- Confirmar que o componente **checklist de entrega** continua compreensível e consistente.
-- Testar a interação principal após qualquer alteração.
-- Conferir comportamento em teclado e tela estreita quando aplicável.
-- Atualizar esta documentação se o comportamento mudar.
+- Confirmar que o componente **checklist de entrega** continua compreensÃ­vel e consistente.
+- Testar a interaÃ§Ã£o principal apÃ³s qualquer alteraÃ§Ã£o.
+- Conferir comportamento em teclado e tela estreita quando aplicÃ¡vel.
+- Atualizar esta documentaÃ§Ã£o se o comportamento mudar.
+
+## Publicacao no GitHub Pages
+
+1. Abra as configuracoes do repositorio no GitHub.
+2. Acesse **Pages**.
+3. Em Build and deployment, selecione **Deploy from a branch**.
+4. Escolha a branch `main` e a pasta `/(root)`.
+5. Salve e aguarde a publicacao.
+6. Abra o endereco apresentado pelo GitHub Pages e teste os links.
+
+A publicacao pode levar alguns minutos. A existencia do repositorio, por si so, nao confirma que o Pages esteja habilitado.
