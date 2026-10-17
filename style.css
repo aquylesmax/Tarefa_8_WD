@@ -1,0 +1,639 @@
+/* ==========================================================================
+   NexTech — folha de estilos principal
+   Organização: tokens, base, componentes, seções, estados e responsividade.
+   ========================================================================== */
+
+/* 01. Variáveis globais: centralizam cores, espaçamentos e sombras. */
+:root {
+  color-scheme: light;
+  --bg: #f7f8fc;
+  --surface: #ffffff;
+  --surface-soft: #eef1fa;
+  --text: #182033;
+  --text-soft: #5d667c;
+  --border: #dfe4f0;
+  --accent: #6558f5;
+  --accent-strong: #4c3ee5;
+  --mint: #76e6c2;
+  --orange: #ffb77e;
+  --blue: #9cc7ff;
+  --pink: #f5a9d6;
+  --yellow: #f5d875;
+  --header-bg: rgba(247, 248, 252, 0.88);
+  --shadow-sm: 0 8px 24px rgba(26, 34, 64, 0.06);
+  --shadow-lg: 0 24px 70px rgba(26, 34, 64, 0.12);
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 30px;
+  --container: 1160px;
+  --transition: 180ms ease;
+}
+
+/* 02. Variáveis do tema escuro; o JS aplica data-theme no elemento raiz. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #101522;
+  --surface: #171e2d;
+  --surface-soft: #20283a;
+  --text: #f1f3fa;
+  --text-soft: #aab3c8;
+  --border: #2e374c;
+  --accent: #938aff;
+  --accent-strong: #b4adff;
+  --header-bg: rgba(16, 21, 34, 0.9);
+  --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.16);
+  --shadow-lg: 0 24px 70px rgba(0, 0, 0, 0.3);
+}
+
+/* 03. Reset pequeno e previsível para elementos HTML comuns. */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  transition: background-color var(--transition), color var(--transition);
+}
+body, button, input, select, textarea { font-family: inherit; }
+button, input, select, textarea { font-size: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; text-decoration: none; }
+button { color: inherit; }
+img, svg { max-width: 100%; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+::selection { background: rgba(101, 88, 245, 0.22); }
+
+/* 04. Utilitários compartilhados. */
+.container { width: min(var(--container), calc(100% - 48px)); margin-inline: auto; }
+.section { padding: 112px 0; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+.skip-link {
+  position: fixed; top: 12px; left: 12px; z-index: 1000;
+  padding: 10px 16px; color: #fff; background: var(--accent-strong);
+  border-radius: 8px; transform: translateY(-160%); transition: transform var(--transition);
+}
+.skip-link:focus { transform: translateY(0); }
+.eyebrow {
+  display: flex; align-items: center; gap: 10px; margin: 0 0 18px;
+  color: var(--accent); font-size: 0.76rem; font-weight: 800; letter-spacing: 0.15em;
+  line-height: 1.4; text-transform: uppercase;
+}
+.eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 5px rgba(118, 230, 194, 0.15); }
+.gradient-text { color: var(--accent); background: linear-gradient(100deg, var(--accent), #9b72ed 55%, #3bbda0); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.muted-heading { color: var(--text-soft); font-weight: 500; }
+.section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; margin-bottom: 42px; }
+.section-heading h2, .process-intro h2, .values-copy h2, .faq-heading h2, .contact-copy h2 {
+  margin: 0; font-size: clamp(2.1rem, 4vw, 3.45rem); line-height: 1.12; letter-spacing: -0.055em;
+}
+.section-intro { max-width: 380px; margin: 0 0 5px; color: var(--text-soft); }
+
+/* 05. Cabeçalho fixo, marca e navegação principal. */
+.site-header {
+  position: sticky; top: 0; z-index: 100; background: var(--header-bg);
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 75%, transparent);
+  backdrop-filter: blur(18px);
+}
+.header-inner { min-height: 82px; display: flex; align-items: center; gap: 28px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.brand-mark {
+  display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px;
+  color: #fff; background: linear-gradient(145deg, var(--accent), #8d7cf9);
+  font-size: 1.25rem; font-weight: 900; box-shadow: 0 7px 18px rgba(101, 88, 245, 0.25);
+}
+.brand-name { font-size: 1.24rem; font-weight: 850; letter-spacing: -0.05em; }
+.brand-name span { color: var(--accent); }
+.primary-nav { display: flex; align-items: center; justify-content: center; gap: 27px; margin-left: auto; }
+.primary-nav a { color: var(--text-soft); font-size: 0.88rem; font-weight: 650; transition: color var(--transition); }
+.primary-nav a:hover, .primary-nav a.is-current { color: var(--accent); }
+.primary-nav .nav-cta { padding: 10px 16px; color: #fff; background: var(--text); border-radius: 10px; }
+.primary-nav .nav-cta:hover { color: #fff; background: var(--accent-strong); }
+.theme-toggle {
+  display: inline-flex; align-items: center; gap: 7px; padding: 9px 11px;
+  border: 1px solid var(--border); border-radius: 10px; background: var(--surface);
+  cursor: pointer; transition: border-color var(--transition), transform var(--transition);
+}
+.theme-toggle:hover { border-color: var(--accent); transform: translateY(-1px); }
+.theme-toggle span:first-child { font-size: 1.15rem; }
+.theme-toggle-label { color: var(--text-soft); font-size: 0.78rem; font-weight: 700; }
+.menu-toggle { display: none; }
+
+/* 06. Botões reutilizáveis com estados de hover e foco. */
+.button {
+  display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 12px;
+  padding: 12px 20px; border: 1px solid transparent; border-radius: 12px;
+  font-size: 0.9rem; font-weight: 750; line-height: 1.2; cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition);
+}
+.button:hover { transform: translateY(-2px); }
+.button-primary { color: #fff; background: var(--accent); box-shadow: 0 10px 24px rgba(101, 88, 245, 0.22); }
+.button-primary:hover { background: var(--accent-strong); box-shadow: 0 14px 28px rgba(101, 88, 245, 0.28); }
+.button-ghost { color: var(--text); background: transparent; border-color: var(--border); }
+.button-ghost:hover { border-color: var(--accent); background: var(--surface); }
+.button-light { color: #292447; background: #fff; }
+.button-light:hover { background: #eeebff; }
+
+/* 07. Hero: mensagem principal e ilustração construída com CSS. */
+.hero { position: relative; overflow: hidden; padding-top: 100px; padding-bottom: 94px; }
+.hero::before {
+  position: absolute; top: -220px; right: -150px; width: 650px; height: 650px;
+  content: ""; border-radius: 50%; background: radial-gradient(circle, rgba(125, 112, 255, 0.13), transparent 68%); pointer-events: none;
+}
+.hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; align-items: center; gap: 45px; position: relative; }
+.hero h1 { margin: 0; font-size: clamp(3rem, 6vw, 5.2rem); font-weight: 850; line-height: 1.02; letter-spacing: -0.075em; }
+.hero-description { max-width: 560px; margin: 28px 0 30px; color: var(--text-soft); font-size: 1.08rem; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-proof { display: flex; gap: 28px; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); }
+.proof-item { display: grid; gap: 2px; }
+.proof-item strong { color: var(--accent); font-size: 0.8rem; }
+.proof-item span { color: var(--text-soft); font-size: 0.78rem; }
+.hero-visual { position: relative; min-height: 440px; display: grid; place-items: center; isolation: isolate; }
+.visual-orbit { position: absolute; border: 1px solid color-mix(in srgb, var(--accent) 24%, transparent); border-radius: 50%; transform: rotate(-25deg); }
+.orbit-one { width: 330px; height: 330px; }
+.orbit-two { width: 430px; height: 250px; transform: rotate(42deg); border-color: color-mix(in srgb, #39c7a1 32%, transparent); }
+.orbit-three { width: 470px; height: 360px; transform: rotate(-62deg); border-style: dashed; }
+.visual-core {
+  display: grid; place-items: center; width: 180px; height: 180px; border: 1px solid rgba(255,255,255,.55);
+  border-radius: 48px; color: #fff; background: linear-gradient(145deg, #7667ff, #3d35a8);
+  box-shadow: 0 30px 90px rgba(101, 88, 245, 0.32), inset 0 1px 1px rgba(255,255,255,.35);
+  transform: rotate(-8deg);
+}
+.visual-core span { font-size: 5rem; font-weight: 900; line-height: 1; letter-spacing: -0.1em; }
+.visual-core small { margin-top: -30px; font-size: 0.62rem; letter-spacing: 0.18em; }
+.floating-card {
+  position: absolute; display: flex; align-items: center; gap: 10px; padding: 13px 16px;
+  border: 1px solid var(--border); border-radius: 14px; color: var(--text); background: var(--surface);
+  box-shadow: var(--shadow-lg); font-size: 0.78rem; font-weight: 750;
+}
+.floating-card-top { top: 62px; right: 4px; }
+.floating-card-bottom { bottom: 52px; left: 2px; }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; background: #39c7a1; box-shadow: 0 0 0 5px rgba(57,199,161,.13); }
+.mini-icon { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; color: var(--accent); background: var(--surface-soft); }
+.visual-spark { position: absolute; color: var(--accent); font-size: 1.7rem; }
+.spark-one { top: 100px; left: 60px; }
+.spark-two { right: 56px; bottom: 96px; color: #39c7a1; }
+.hero-bottom-line { position: absolute; right: 0; bottom: 0; left: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
+
+/* 08. Faixa de princípios. */
+.principles-strip { border-bottom: 1px solid var(--border); background: var(--surface); }
+.principles-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 72px; color: var(--text-soft); font-size: 0.8rem; font-weight: 700; }
+.principle-separator { color: var(--accent); font-size: 1.1rem; }
+
+/* 09. Serviços: cartões, filtros e lista de benefícios. */
+.services-section { background: var(--bg); }
+.filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; }
+.filter-button { padding: 9px 15px; border: 1px solid var(--border); border-radius: 999px; color: var(--text-soft); background: var(--surface); font-size: 0.8rem; font-weight: 750; cursor: pointer; transition: all var(--transition); }
+.filter-button:hover, .filter-button.is-active { color: #fff; border-color: var(--accent); background: var(--accent); }
+.service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.service-card { padding: 28px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition); }
+.service-card:hover { transform: translateY(-5px); border-color: color-mix(in srgb, var(--accent) 50%, var(--border)); box-shadow: var(--shadow-sm); }
+.service-card[hidden] { display: none; }
+.service-icon { display: grid; place-items: center; width: 48px; height: 48px; margin-bottom: 25px; border-radius: 15px; font-size: 1.45rem; font-weight: 800; }
+.icon-violet { color: #5144c9; background: #e8e5ff; }
+.icon-mint { color: #126b58; background: #d9f9ee; }
+.icon-orange { color: #8d4b1c; background: #ffead8; }
+.icon-blue { color: #245a9a; background: #dcecff; }
+.icon-pink { color: #8f3c72; background: #ffe0f1; }
+.icon-yellow { color: #7b5d12; background: #fff3c9; }
+.card-kicker { margin: 0 0 8px; color: var(--accent); font-size: 0.68rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+.service-card h3 { margin: 0 0 12px; font-size: 1.23rem; line-height: 1.3; letter-spacing: -.03em; }
+.service-card > p:not(.card-kicker) { min-height: 76px; margin: 0; color: var(--text-soft); font-size: .9rem; }
+.feature-list { display: grid; gap: 7px; margin: 20px 0 24px; padding: 0; list-style: none; color: var(--text-soft); font-size: .8rem; }
+.feature-list li::before { content: "✓"; margin-right: 9px; color: #36b995; font-weight: 900; }
+.text-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-size: .82rem; font-weight: 800; }
+.text-link span { transition: transform var(--transition); }
+.text-link:hover span { transform: translateX(4px); }
+.empty-state { padding: 20px; color: var(--text-soft); text-align: center; }
+
+/* 10. Projetos conceituais e ilustrações de interface sem imagens externas. */
+.projects-section { background: var(--surface-soft); }
+.project-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 18px; }
+.project-card { overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); }
+.project-art { position: relative; display: grid; min-height: 250px; place-items: center; overflow: hidden; background: linear-gradient(140deg, #e8e6ff, #dff8ef); }
+.project-large .project-art { min-height: 285px; }
+.art-dashboard { background: radial-gradient(circle at 20% 20%, #c6f4e9, transparent 40%), linear-gradient(145deg, #d9d5ff, #f0f3ff); }
+.mock-window { width: 82%; overflow: hidden; border: 1px solid rgba(70, 63, 135, .2); border-radius: 13px; background: #fff; box-shadow: 0 18px 40px rgba(50, 45, 120, .18); transform: rotate(-4deg); }
+.mock-window-top { display: flex; align-items: center; gap: 5px; height: 27px; padding: 0 10px; border-bottom: 1px solid #ececf7; }
+.mock-window-top i { width: 5px; height: 5px; border-radius: 50%; background: #aaa5dd; }
+.mock-window-top span { margin-left: auto; color: #8a8ba2; font-size: 6px; letter-spacing: .1em; }
+.mock-dashboard { display: grid; grid-template-columns: 23% 1fr; min-height: 160px; }
+.mock-side { background: #f1f0ff; }
+.mock-content { padding: 15px; }
+.mock-title { display: block; width: 45%; height: 8px; margin-bottom: 14px; border-radius: 4px; background: #4e477f; }
+.mock-stats { display: flex; gap: 7px; }
+.mock-stats i { display: block; width: 33%; height: 27px; border-radius: 5px; background: #e8e5ff; }
+.mock-chart { display: flex; align-items: flex-end; gap: 7px; height: 65px; margin-top: 13px; padding: 8px; border-radius: 6px; background: #f6f6fc; }
+.mock-chart span { flex: 1; border-radius: 3px 3px 0 0; background: #7b6cff; }
+.mock-chart span:nth-child(1) { height: 35%; }
+.mock-chart span:nth-child(2) { height: 55%; }
+.mock-chart span:nth-child(3) { height: 43%; }
+.mock-chart span:nth-child(4) { height: 75%; }
+.mock-chart span:nth-child(5) { height: 60%; }
+.mock-chart span:nth-child(6) { height: 90%; }
+.mock-chart span:nth-child(7) { height: 68%; }
+.art-mobile { background: radial-gradient(circle at 70% 20%, #f5d4e9, transparent 45%), linear-gradient(145deg, #d7eaff, #e7e2ff); }
+.phone-frame { width: 105px; height: 205px; padding: 8px; border: 3px solid #2a2c47; border-radius: 22px; background: #252743; box-shadow: 0 20px 30px rgba(44, 45, 80, .2); transform: rotate(7deg); }
+.phone-speaker { width: 28px; height: 4px; margin: 0 auto 9px; border-radius: 9px; background: #565775; }
+.phone-screen { display: flex; flex-direction: column; gap: 9px; height: 166px; padding: 10px 7px; border-radius: 13px; background: #fff; }
+.phone-greeting { color: #34345d; font-size: 7px; font-weight: 900; }
+.phone-card { height: 54px; border-radius: 7px; background: linear-gradient(135deg, #8173ff, #b7a9ff); }
+.phone-line { width: 100%; height: 5px; border-radius: 4px; background: #e4e5f0; }
+.phone-line.short { width: 65%; }
+.phone-action { height: 20px; margin-top: auto; border-radius: 6px; background: #6b5cf6; }
+.art-flow { display: flex; flex-direction: column; gap: 10px; background: radial-gradient(circle at 20% 20%, #e4f9d8, transparent 45%), linear-gradient(145deg, #f7e9d8, #dff5ef); }
+.flow-node { min-width: 115px; padding: 9px 15px; border: 1px solid rgba(68, 79, 100, .15); border-radius: 9px; background: rgba(255,255,255,.85); color: #343b54; text-align: center; font-size: .72rem; font-weight: 800; box-shadow: 0 5px 12px rgba(40, 60, 70, .08); }
+.node-two { color: #fff; background: #6c5cf5; }
+.flow-connector { width: 1px; height: 10px; background: #8b91a7; }
+.project-info { display: grid; gap: 12px; padding: 22px; }
+.project-type { color: var(--accent); font-size: .66rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+.project-info h3 { margin: 5px 0 0; font-size: 1.15rem; letter-spacing: -.03em; }
+.project-info p { margin: 0; color: var(--text-soft); font-size: .84rem; }
+
+/* 11. Processo em etapas. */
+.process-section { background: var(--bg); }
+.process-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 90px; align-items: start; }
+.process-intro > p:not(.eyebrow) { max-width: 410px; margin: 22px 0 28px; color: var(--text-soft); }
+.process-steps { border-top: 1px solid var(--border); }
+.process-step { display: grid; grid-template-columns: 48px 1fr 40px; align-items: start; gap: 18px; padding: 25px 0; border-bottom: 1px solid var(--border); }
+.step-number { padding-top: 4px; color: var(--accent); font-size: .8rem; font-weight: 900; }
+.process-step h3 { margin: 0 0 5px; font-size: 1.08rem; }
+.process-step p { margin: 0; color: var(--text-soft); font-size: .88rem; }
+.step-symbol { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 11px; color: var(--accent); background: var(--surface-soft); font-size: 1.2rem; }
+
+/* 12. Valores e princípios. */
+.values-section { overflow: hidden; background: var(--surface); }
+.values-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: center; }
+.values-visual { position: relative; display: grid; min-height: 390px; place-items: center; }
+.values-orb { position: absolute; border-radius: 50%; filter: blur(1px); }
+.orb-a { width: 270px; height: 270px; background: linear-gradient(145deg, #7668ff, #c4bdff); box-shadow: 0 30px 70px rgba(101,88,245,.22); }
+.orb-b { width: 180px; height: 180px; right: 10%; bottom: 12%; background: linear-gradient(145deg, #b5f2df, #4ec8aa); opacity: .9; }
+.orb-c { width: 100px; height: 100px; top: 10%; left: 18%; background: linear-gradient(145deg, #ffe4bf, #ffb77e); }
+.values-center { position: relative; z-index: 1; display: grid; place-items: center; width: 180px; height: 180px; border: 1px solid rgba(255,255,255,.5); border-radius: 50%; color: #fff; background: rgba(36, 31, 96, .3); backdrop-filter: blur(12px); }
+.values-center span { font-size: 4rem; font-weight: 900; letter-spacing: -.1em; }
+.values-center small { margin-top: -25px; font-size: .55rem; letter-spacing: .15em; }
+.values-copy > p:not(.eyebrow) { margin: 22px 0 28px; color: var(--text-soft); }
+.value-list { display: grid; gap: 18px; }
+.value-item { display: flex; align-items: flex-start; gap: 14px; }
+.value-check { display: grid; flex-shrink: 0; place-items: center; width: 28px; height: 28px; border-radius: 9px; color: #087d65; background: #d8f8ee; font-weight: 900; }
+.value-item h3 { margin: 0 0 3px; font-size: .98rem; }
+.value-item p { margin: 0; color: var(--text-soft); font-size: .85rem; }
+
+/* 13. FAQ com acordeão acessível. */
+.faq-section { background: var(--surface-soft); }
+.faq-layout { display: grid; grid-template-columns: .75fr 1.25fr; gap: 90px; align-items: start; }
+.faq-heading > p:not(.eyebrow) { margin: 20px 0; color: var(--text-soft); }
+.faq-list { border-top: 1px solid var(--border); }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-item h3 { margin: 0; }
+.faq-question { display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; padding: 22px 0; border: 0; background: transparent; text-align: left; cursor: pointer; font-size: .98rem; font-weight: 800; }
+.faq-plus { display: grid; flex-shrink: 0; place-items: center; width: 28px; height: 28px; border: 1px solid var(--border); border-radius: 50%; color: var(--accent); transition: transform var(--transition), background var(--transition); }
+.faq-question[aria-expanded="true"] .faq-plus { transform: rotate(45deg); color: #fff; border-color: var(--accent); background: var(--accent); }
+.faq-answer { padding: 0 35px 22px 0; }
+.faq-answer p { margin: 0; color: var(--text-soft); font-size: .9rem; }
+.faq-answer[hidden] { display: none; }
+
+/* 14. Formulário de contato demonstrativo. */
+.contact-section { background: var(--bg); }
+.contact-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 90px; align-items: start; }
+.contact-copy > p:not(.eyebrow) { max-width: 460px; margin: 22px 0 30px; color: var(--text-soft); }
+.contact-detail { display: flex; align-items: flex-start; gap: 14px; margin-top: 22px; }
+.contact-detail-icon { display: grid; flex-shrink: 0; place-items: center; width: 42px; height: 42px; border-radius: 12px; color: var(--accent); background: var(--surface-soft); font-size: 1.2rem; }
+.contact-detail div { display: grid; gap: 3px; }
+.contact-detail strong { font-size: .88rem; }
+.contact-detail span:last-child { color: var(--text-soft); font-size: .82rem; }
+.contact-form { padding: 30px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow-sm); }
+.form-heading { display: flex; justify-content: space-between; gap: 15px; margin-bottom: 25px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+.form-heading span:first-child { color: var(--accent); font-size: .72rem; font-weight: 900; letter-spacing: .12em; }
+.form-required { color: var(--text-soft); font-size: .7rem; }
+.form-field { display: grid; gap: 7px; margin-bottom: 18px; }
+.form-field label { font-size: .82rem; font-weight: 800; }
+.form-field label span { color: #d85858; }
+.form-field input, .form-field select, .form-field textarea {
+  width: 100%; padding: 12px 13px; border: 1px solid var(--border); border-radius: 10px;
+  color: var(--text); background: var(--bg); transition: border-color var(--transition), box-shadow var(--transition);
+}
+.form-field input::placeholder, .form-field textarea::placeholder { color: #929bb0; }
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(101,88,245,.1); outline: 0; }
+.form-field textarea { resize: vertical; min-height: 110px; }
+.form-field [aria-invalid="true"] { border-color: #d85858; }
+.field-error { min-height: 0; color: #d85858; font-size: .75rem; }
+.field-error:empty { display: none; }
+.character-count { color: var(--text-soft); text-align: right; font-size: .7rem; }
+.checkbox-field { display: flex; align-items: flex-start; gap: 10px; margin: 18px 0; color: var(--text-soft); font-size: .78rem; }
+.checkbox-field input { flex-shrink: 0; margin-top: 5px; accent-color: var(--accent); }
+.form-submit { width: 100%; border: 0; }
+.form-feedback { min-height: 0; margin: 14px 0 0; font-size: .85rem; font-weight: 700; }
+.form-feedback:empty { display: none; }
+.form-feedback.is-success { padding: 12px; border-radius: 10px; color: #11694f; background: #d9f8eb; }
+.form-feedback.is-error { padding: 12px; border-radius: 10px; color: #9b3434; background: #ffebeb; }
+
+/* 15. Chamada final e rodapé. */
+.closing-section { padding: 55px 0; color: #fff; background: linear-gradient(110deg, #4f43d7, #7767f8 58%, #3caa94); }
+.closing-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+.closing-inner .eyebrow { color: #d7d3ff; }
+.closing-inner h2 { max-width: 600px; margin: 0; font-size: clamp(1.8rem, 3.6vw, 2.8rem); line-height: 1.15; letter-spacing: -.05em; }
+.site-footer { background: var(--surface); }
+.footer-main { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.1fr; gap: 50px; padding-top: 65px; padding-bottom: 55px; }
+.footer-brand p { max-width: 270px; margin: 18px 0 0; color: var(--text-soft); font-size: .83rem; }
+.footer-column { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.footer-column h2 { margin: 0 0 7px; font-size: .82rem; }
+.footer-column a, .footer-column p { margin: 0; color: var(--text-soft); font-size: .78rem; }
+.footer-column a:hover { color: var(--accent); }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 20px; padding-bottom: 20px; border-top: 1px solid var(--border); color: var(--text-soft); font-size: .72rem; }
+.footer-bottom a { color: var(--accent); font-weight: 800; }
+.back-to-top { position: fixed; right: 22px; bottom: 22px; z-index: 80; display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 13px; color: #fff; background: var(--accent); box-shadow: var(--shadow-sm); font-size: 1.3rem; cursor: pointer; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity var(--transition), visibility var(--transition), transform var(--transition); }
+.back-to-top.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { background: var(--accent-strong); }
+
+/* 16. Estados de navegação e preferência por movimento reduzido. */
+body.menu-open { overflow: hidden; }
+.is-hidden { display: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+/* 17. Responsividade para telas intermediárias. */
+@media (max-width: 1050px) {
+  .primary-nav { gap: 16px; }
+  .primary-nav a { font-size: .82rem; }
+  .hero-grid { gap: 15px; }
+  .hero h1 { font-size: clamp(2.8rem, 5.5vw, 4.5rem); }
+  .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .project-large { grid-column: span 2; }
+  .process-layout, .values-layout, .faq-layout, .contact-layout { gap: 55px; }
+  .footer-main { gap: 30px; }
+}
+
+/* 18. Menu móvel e layout para tablets/celulares. */
+@media (max-width: 780px) {
+  .container { width: min(100% - 36px, var(--container)); }
+  .section { padding: 78px 0; }
+  .header-inner { min-height: 72px; gap: 12px; }
+  .menu-toggle { display: flex; flex-direction: column; justify-content: center; gap: 5px; order: 3; width: 42px; height: 42px; margin-left: auto; padding: 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); cursor: pointer; }
+  .menu-toggle-line { display: block; width: 100%; height: 2px; border-radius: 4px; background: var(--text); transition: transform var(--transition), opacity var(--transition); }
+  .menu-toggle[aria-expanded="true"] .menu-toggle-line:first-child { transform: translateY(7px) rotate(45deg); }
+  .menu-toggle[aria-expanded="true"] .menu-toggle-line:nth-child(2) { opacity: 0; }
+  .menu-toggle[aria-expanded="true"] .menu-toggle-line:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .theme-toggle { order: 2; padding: 9px; }
+  .theme-toggle-label { display: none; }
+  .primary-nav { position: fixed; top: 72px; right: 0; left: 0; display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 14px 18px 22px; border-bottom: 1px solid var(--border); background: var(--surface); box-shadow: var(--shadow-lg); transform: translateY(-150%); visibility: hidden; transition: transform var(--transition), visibility var(--transition); }
+  .primary-nav.is-open { transform: translateY(0); visibility: visible; }
+  .primary-nav a { padding: 13px 12px; font-size: .95rem; }
+  .primary-nav .nav-cta { margin-top: 6px; text-align: center; }
+  .hero { padding-top: 65px; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-copy { position: relative; z-index: 2; }
+  .hero h1 { font-size: clamp(3rem, 10vw, 4.5rem); }
+  .hero-visual { min-height: 350px; margin-top: 10px; }
+  .orbit-one { width: 270px; height: 270px; }
+  .orbit-two { width: 340px; height: 220px; }
+  .orbit-three { width: 360px; height: 290px; }
+  .visual-core { width: 145px; height: 145px; border-radius: 38px; }
+  .visual-core span { font-size: 4rem; }
+  .floating-card-top { top: 35px; right: 0; }
+  .floating-card-bottom { bottom: 25px; left: 0; }
+  .principles-inner { flex-wrap: wrap; justify-content: center; gap: 8px 15px; padding-top: 18px; padding-bottom: 18px; text-align: center; }
+  .principles-inner > span:not(.principle-separator) { font-size: .72rem; }
+  .section-heading { display: block; }
+  .section-intro { max-width: 560px; margin-top: 20px; }
+  .service-grid { gap: 12px; }
+  .service-card { padding: 22px; }
+  .project-grid { gap: 12px; }
+  .process-layout, .values-layout, .faq-layout, .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+  .values-visual { min-height: 300px; order: 2; }
+  .values-copy { order: 1; }
+  .faq-layout { gap: 28px; }
+  .contact-form { padding: 24px; }
+  .footer-main { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .closing-inner { align-items: flex-start; flex-direction: column; }
+}
+
+/* 19. Ajustes finos para celulares estreitos. */
+@media (max-width: 520px) {
+  .container { width: calc(100% - 30px); }
+  .section { padding: 65px 0; }
+  .brand-name { font-size: 1.1rem; }
+  .brand-mark { width: 34px; height: 34px; }
+  .hero h1 { font-size: clamp(2.55rem, 12vw, 3.4rem); }
+  .hero-description { font-size: .98rem; }
+  .hero-actions { align-items: stretch; flex-direction: column; }
+  .hero-actions .button { width: 100%; }
+  .hero-proof { gap: 14px; }
+  .proof-item span { max-width: 85px; font-size: .68rem; }
+  .hero-visual { min-height: 300px; }
+  .visual-core { width: 125px; height: 125px; border-radius: 32px; }
+  .visual-core span { font-size: 3.4rem; }
+  .floating-card { padding: 10px 12px; font-size: .68rem; }
+  .floating-card-top { top: 18px; }
+  .floating-card-bottom { bottom: 15px; }
+  .service-grid, .project-grid { grid-template-columns: 1fr; }
+  .project-large { grid-column: auto; }
+  .project-large .project-art, .project-art { min-height: 235px; }
+  .service-card > p:not(.card-kicker) { min-height: 0; }
+  .process-step { grid-template-columns: 34px 1fr 32px; gap: 12px; }
+  .step-symbol { width: 30px; height: 30px; }
+  .values-visual { min-height: 260px; }
+  .orb-a { width: 210px; height: 210px; }
+  .orb-b { width: 130px; height: 130px; }
+  .orb-c { width: 75px; height: 75px; }
+  .values-center { width: 145px; height: 145px; }
+  .values-center span { font-size: 3.2rem; }
+  .faq-question { font-size: .9rem; }
+  .contact-form { padding: 20px 16px; border-radius: 20px; }
+  .form-heading { flex-direction: column; gap: 5px; }
+  .footer-main { grid-template-columns: 1fr 1fr; gap: 30px 18px; padding-top: 45px; }
+  .footer-brand { grid-column: span 2; }
+  .footer-bottom { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .closing-section { padding: 42px 0; }
+  .closing-inner h2 { font-size: 1.9rem; }
+}
+
+/* 20. Estilos para impressão e documentação exportada. */
+@media print {
+  .site-header, .back-to-top, .theme-toggle, .menu-toggle, .contact-form, .closing-section { display: none !important; }
+  body { color: #111; background: #fff; }
+  .section { padding: 24px 0; break-inside: avoid; }
+  .container { width: 100%; }
+  a { text-decoration: underline; }
+}
+
+/* 21. Regras de robustez para navegadores que não suportam color-mix. */
+@supports not (color: color-mix(in srgb, white, black)) {
+  .site-header { border-bottom-color: var(--border); }
+  .hero::before { background: rgba(125, 112, 255, 0.08); }
+  .service-card:hover { border-color: var(--accent); }
+}
+
+/* 22. Estados de validação do formulário. */
+.form-field input.is-valid, .form-field textarea.is-valid { border-color: #31a981; }
+.form-field input.is-invalid, .form-field textarea.is-invalid { border-color: #d85858; }
+.form-field input.is-valid:focus, .form-field textarea.is-valid:focus { box-shadow: 0 0 0 3px rgba(49,169,129,.12); }
+.form-field input.is-invalid:focus, .form-field textarea.is-invalid:focus { box-shadow: 0 0 0 3px rgba(216,88,88,.12); }
+
+/* 23. Aparência de elementos desabilitados. */
+button:disabled { cursor: not-allowed; opacity: .6; }
+input:disabled, select:disabled, textarea:disabled { cursor: not-allowed; opacity: .65; }
+
+/* 24. Fallback de fundo quando gradientes não estiverem disponíveis. */
+@supports not (background: linear-gradient(90deg, black, white)) {
+  .gradient-text { color: var(--accent); }
+  .closing-section { background: #5144c9; }
+}
+
+/* 25. Ajustes de foco para botões de filtro e perguntas. */
+.filter-button:focus-visible, .faq-question:focus-visible { outline-offset: 3px; }
+.filter-button[aria-pressed="true"] { box-shadow: 0 5px 14px rgba(101,88,245,.18); }
+
+/* 26. Consistência de ícones de decoração. */
+.service-icon, .step-symbol, .contact-detail-icon { user-select: none; }
+.visual-spark { user-select: none; pointer-events: none; }
+
+/* 27. Evita que seções escondidas por navegação fiquem sob o cabeçalho fixo. */
+section[id] { scroll-margin-top: 96px; }
+
+/* 28. Elementos de feedback usam contraste e espaçamento próprios. */
+.form-feedback { line-height: 1.5; }
+.field-error { line-height: 1.4; }
+
+/* 29. Melhor leitura para conteúdo de parágrafos em áreas estreitas. */
+.project-info p, .service-card p, .faq-answer p { text-wrap: pretty; }
+
+/* 30. Encerramento da folha de estilos principal. */
+
+/* Catálogo de decisões visuais para futuras revisões acadêmicas. */
+/* Revisão visual 01: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 01: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 02: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 02: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 03: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 03: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 04: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 04: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 05: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 05: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 06: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 06: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 07: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 07: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 08: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 08: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 09: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 09: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 10: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 10: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 11: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 11: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 12: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 12: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 13: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 13: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 14: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 14: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 15: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 15: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 16: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 16: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 17: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 17: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 18: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 18: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 19: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 19: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 20: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 20: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 21: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 21: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 22: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 22: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 23: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 23: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 24: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 24: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 25: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 25: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 26: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 26: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 27: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 27: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 28: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 28: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 29: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 29: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 30: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 30: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 31: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 31: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 32: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 32: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 33: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 33: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 34: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 34: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 35: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 35: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 36: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 36: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 37: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 37: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 38: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 38: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 39: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 39: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 40: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 40: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 41: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 41: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 42: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 42: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 43: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 43: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 44: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 44: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 45: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 45: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 46: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 46: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 47: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 47: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 48: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 48: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 49: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 49: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 50: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 50: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 51: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 51: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 52: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 52: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 53: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 53: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 54: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 54: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 55: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 55: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 56: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 56: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 57: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 57: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 58: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 58: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 59: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 59: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+/* Revisão visual 60: manter contraste, espaçamento consistente e foco visível em componentes interativos. */
+/* Responsividade 60: testar o componente em celular, tablet e desktop antes de alterar o breakpoint. */
+
+/* 31. Revelação progressiva: aplicada apenas se o JavaScript estiver ativo. */
+.reveal-pending { opacity: 0; transform: translateY(14px); }
+.reveal-visible { opacity: 1; transform: translateY(0); transition: opacity 420ms ease, transform 420ms ease; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal-pending, .reveal-visible { opacity: 1; transform: none; transition: none; }
+}

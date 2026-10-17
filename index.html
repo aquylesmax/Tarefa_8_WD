@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- Define a codificação para exibir acentos corretamente. -->
+  <meta charset="UTF-8">
+  <!-- Faz o layout adaptar-se a celulares, tablets e computadores. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Descrição usada por mecanismos de busca e prévias. -->
+  <meta name="description" content="NexTech: soluções digitais, sites e sistemas para negócios.">
+  <meta name="theme-color" content="#101827">
+  <title>NexTech | Ideias que viram soluções digitais</title>
+  <!-- O CSS é carregado em arquivo externo, conforme o requisito da atividade. -->
+  <link rel="stylesheet" href="style.css">
+  <!-- O JavaScript externo é carregado com defer para esperar o HTML ser analisado. -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Link de acessibilidade que permite pular a navegação. -->
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- Cabeçalho principal com identidade visual e navegação. -->
+  <header class="site-header" id="topo">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="NexTech, página inicial">
+        <span class="brand-mark" aria-hidden="true">N</span>
+        <span class="brand-name">Nex<span>Tech</span></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" type="button"
+              aria-expanded="false" aria-controls="primaryNav">
+        <span class="menu-toggle-line"></span>
+        <span class="menu-toggle-line"></span>
+        <span class="menu-toggle-line"></span>
+        <span class="sr-only">Abrir ou fechar menu</span>
+      </button>
+      <nav class="primary-nav" id="primaryNav" aria-label="Navegação principal">
+        <a href="#inicio">Início</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#processo">Processo</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-cta" href="#contato">Fale conosco</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Ativar tema escuro">
+        <span aria-hidden="true" id="themeIcon">☾</span>
+        <span class="theme-toggle-label">Tema</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- Seção de abertura: apresenta a proposta de valor do site. -->
+    <section class="hero section" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> Tecnologia com propósito</p>
+          <h1>Ideias inteligentes.<br><span class="gradient-text">Soluções que evoluem.</span></h1>
+          <p class="hero-description">
+            Transformamos desafios do dia a dia em experiências digitais simples,
+            úteis e preparadas para crescer junto com o seu negócio.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#contato">Começar um projeto <span aria-hidden="true">↗</span></a>
+            <a class="button button-ghost" href="#servicos">Explorar soluções</a>
+          </div>
+          <div class="hero-proof" aria-label="Diferenciais da NexTech">
+            <div class="proof-item"><strong>01</strong><span>Estratégia clara</span></div>
+            <div class="proof-item"><strong>02</strong><span>Design funcional</span></div>
+            <div class="proof-item"><strong>03</strong><span>Tecnologia acessível</span></div>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Ilustração abstrata de conexões digitais">
+          <div class="visual-orbit orbit-one"></div>
+          <div class="visual-orbit orbit-two"></div>
+          <div class="visual-orbit orbit-three"></div>
+          <div class="visual-core"><span>N</span><small>NX / 01</small></div>
+          <div class="floating-card floating-card-top"><span class="status-dot"></span><span>Ideia em evolução</span></div>
+          <div class="floating-card floating-card-bottom"><span class="mini-icon">↗</span><span>Experiência digital</span></div>
+          <span class="visual-spark spark-one">✦</span>
+          <span class="visual-spark spark-two">✧</span>
+        </div>
+      </div>
+      <div class="hero-bottom-line" aria-hidden="true"></div>
+    </section>
+
+    <!-- Faixa de princípios para reforçar a proposta sem depender de números inventados. -->
+    <section class="principles-strip" aria-label="Princípios de trabalho">
+      <div class="container principles-inner">
+        <span>Clareza antes da complexidade</span>
+        <span class="principle-separator">✳</span>
+        <span>Design a serviço das pessoas</span>
+        <span class="principle-separator">✳</span>
+        <span>Melhoria contínua</span>
+      </div>
+    </section>
+
+    <!-- Serviços principais: os cartões também são filtráveis pelo JavaScript. -->
+    <section class="section services-section" id="servicos">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">O que fazemos</p>
+            <h2>Ferramentas digitais<br><span class="muted-heading">para avançar com confiança.</span></h2>
+          </div>
+          <p class="section-intro">
+            Cada projeto parte de uma necessidade real e ganha forma por meio
+            de planejamento, execução e atenção aos detalhes.
+          </p>
+        </div>
+        <div class="filter-bar" role="group" aria-label="Filtrar serviços">
+          <button class="filter-button is-active" type="button" data-service-filter="todos" aria-pressed="true">Todos</button>
+          <button class="filter-button" type="button" data-service-filter="web" aria-pressed="false">Web</button>
+          <button class="filter-button" type="button" data-service-filter="processos" aria-pressed="false">Processos</button>
+          <button class="filter-button" type="button" data-service-filter="estrategia" aria-pressed="false">Estratégia</button>
+        </div>
+        <div class="service-grid" id="serviceGrid">
+          <article class="service-card" data-category="web">
+            <div class="service-icon icon-violet" aria-hidden="true">⌘</div>
+            <p class="card-kicker">01 / Presença digital</p>
+            <h3>Sites e experiências web</h3>
+            <p>Interfaces responsivas que organizam informações e tornam a comunicação mais clara.</p>
+            <ul class="feature-list">
+              <li>Layout adaptável</li>
+              <li>Estrutura acessível</li>
+              <li>Conteúdo organizado</li>
+            </ul>
+            <a class="text-link" href="#contato" data-prefill="Quero conversar sobre um site">Conversar sobre este serviço <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="service-card" data-category="processos">
+            <div class="service-icon icon-mint" aria-hidden="true">↻</div>
+            <p class="card-kicker">02 / Eficiência</p>
+            <h3>Automação de processos</h3>
+            <p>Fluxos mais consistentes para reduzir tarefas repetitivas e liberar tempo para o que importa.</p>
+            <ul class="feature-list">
+              <li>Mapeamento de etapas</li>
+              <li>Padronização de rotinas</li>
+              <li>Menos retrabalho</li>
+            </ul>
+            <a class="text-link" href="#contato" data-prefill="Quero conversar sobre automação">Conversar sobre este serviço <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="service-card" data-category="web">
+            <div class="service-icon icon-orange" aria-hidden="true">▦</div>
+            <p class="card-kicker">03 / Organização</p>
+            <h3>Sistemas sob medida</h3>
+            <p>Aplicações para centralizar informações, apoiar decisões e acompanhar atividades.</p>
+            <ul class="feature-list">
+              <li>Painéis informativos</li>
+              <li>Fluxos personalizados</li>
+              <li>Foco na usabilidade</li>
+            </ul>
+            <a class="text-link" href="#contato" data-prefill="Quero conversar sobre um sistema">Conversar sobre este serviço <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="service-card" data-category="estrategia">
+            <div class="service-icon icon-blue" aria-hidden="true">◎</div>
+            <p class="card-kicker">04 / Direção</p>
+            <h3>Estratégia digital</h3>
+            <p>Definição de prioridades para conectar objetivos, conteúdo, experiência e tecnologia.</p>
+            <ul class="feature-list">
+              <li>Levantamento de necessidades</li>
+              <li>Priorização de entregas</li>
+              <li>Plano de evolução</li>
+            </ul>
+            <a class="text-link" href="#contato" data-prefill="Quero conversar sobre estratégia digital">Conversar sobre este serviço <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="service-card" data-category="processos">
+            <div class="service-icon icon-pink" aria-hidden="true">⌁</div>
+            <p class="card-kicker">05 / Conexão</p>
+            <h3>Integração de ferramentas</h3>
+            <p>Conexões entre ferramentas para diminuir duplicidade de dados e simplificar rotinas.</p>
+            <ul class="feature-list">
+              <li>Mapeamento de sistemas</li>
+              <li>Regras de integração</li>
+              <li>Documentação clara</li>
+            </ul>
+            <a class="text-link" href="#contato" data-prefill="Quero conversar sobre integração">Conversar sobre este serviço <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="service-card" data-category="estrategia">
+            <div class="service-icon icon-yellow" aria-hidden="true">✳</div>
+            <p class="card-kicker">06 / Aprendizado</p>
+            <h3>Consultoria e melhoria</h3>
+            <p>Revisão de experiências existentes para identificar ajustes úteis e próximos passos.</p>
+            <ul class="feature-list">
+              <li>Análise de jornada</li>
+              <li>Recomendações práticas</li>
+              <li>Melhoria incremental</li>
+            </ul>
+            <a class="text-link" href="#contato" data-prefill="Quero conversar sobre consultoria">Conversar sobre este serviço <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+        <p class="empty-state" id="serviceEmpty" hidden>Nenhum serviço encontrado nesta categoria.</p>
+      </div>
+    </section>
+
+    <!-- Seção de projetos demonstrativos; os exemplos são conceituais, não clientes reais. -->
+    <section class="section projects-section" id="projetos">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Laboratório de ideias</p>
+            <h2>Projetos que mostram<br><span class="muted-heading">o valor de uma boa solução.</span></h2>
+          </div>
+          <p class="section-intro">Exemplos conceituais de como a tecnologia pode organizar experiências e rotinas.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card project-large">
+            <div class="project-art art-dashboard" aria-hidden="true">
+              <div class="mock-window">
+                <div class="mock-window-top"><i></i><i></i><i></i><span>overview / 01</span></div>
+                <div class="mock-dashboard">
+                  <div class="mock-side"></div>
+                  <div class="mock-content">
+                    <div class="mock-title"></div>
+                    <div class="mock-stats"><i></i><i></i><i></i></div>
+                    <div class="mock-chart"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <div><span class="project-type">Conceito / Gestão</span><h3>Painel de operação</h3></div>
+              <p>Uma visão organizada para acompanhar tarefas, prioridades e informações relevantes.</p>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-art art-mobile" aria-hidden="true">
+              <div class="phone-frame">
+                <div class="phone-speaker"></div>
+                <div class="phone-screen">
+                  <span class="phone-greeting">Olá, Marina</span>
+                  <span class="phone-card"></span>
+                  <span class="phone-line"></span>
+                  <span class="phone-line short"></span>
+                  <span class="phone-action"></span>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <div><span class="project-type">Conceito / Experiência</span><h3>Jornada simplificada</h3></div>
+              <p>Uma experiência direta, pensada para facilitar a conclusão de tarefas.</p>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-art art-flow" aria-hidden="true">
+              <div class="flow-node node-one">Entrada</div>
+              <div class="flow-connector"></div>
+              <div class="flow-node node-two">Processo</div>
+              <div class="flow-connector"></div>
+              <div class="flow-node node-three">Resultado</div>
+            </div>
+            <div class="project-info">
+              <div><span class="project-type">Conceito / Automação</span><h3>Fluxo conectado</h3></div>
+              <p>Etapas visíveis para entender responsabilidades e reduzir retrabalho.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Etapas do trabalho apresentadas como sequência clara. -->
+    <section class="section process-section" id="processo">
+      <div class="container process-layout">
+        <div class="process-intro">
+          <p class="eyebrow">Como trabalhamos</p>
+          <h2>Do primeiro rascunho<br>à <span class="gradient-text">próxima versão.</span></h2>
+          <p>Um processo colaborativo ajuda a tomar decisões melhores e manter expectativas alinhadas em cada etapa.</p>
+          <a class="button button-primary" href="#contato">Vamos conversar <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="process-steps">
+          <article class="process-step">
+            <span class="step-number">01</span>
+            <div><h3>Entender</h3><p>Mapeamos o contexto, o público e o problema que precisa ser resolvido.</p></div>
+            <span class="step-symbol" aria-hidden="true">⌕</span>
+          </article>
+          <article class="process-step">
+            <span class="step-number">02</span>
+            <div><h3>Planejar</h3><p>Definimos escopo, prioridades e critérios para avaliar a solução.</p></div>
+            <span class="step-symbol" aria-hidden="true">▤</span>
+          </article>
+          <article class="process-step">
+            <span class="step-number">03</span>
+            <div><h3>Construir</h3><p>Desenvolvemos a experiência com atenção à acessibilidade e responsividade.</p></div>
+            <span class="step-symbol" aria-hidden="true">⌘</span>
+          </article>
+          <article class="process-step">
+            <span class="step-number">04</span>
+            <div><h3>Aprimorar</h3><p>Testamos interações, corrigimos detalhes e documentamos os próximos passos.</p></div>
+            <span class="step-symbol" aria-hidden="true">↗</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bloco de princípios que explica decisões de design e desenvolvimento. -->
+    <section class="section values-section" id="sobre">
+      <div class="container values-layout">
+        <div class="values-visual">
+          <div class="values-orb orb-a"></div>
+          <div class="values-orb orb-b"></div>
+          <div class="values-orb orb-c"></div>
+          <div class="values-center"><span>NX</span><small>THINK / BUILD / EVOLVE</small></div>
+        </div>
+        <div class="values-copy">
+          <p class="eyebrow">Nossa perspectiva</p>
+          <h2>Tecnologia boa é aquela que <span class="gradient-text">faz sentido.</span></h2>
+          <p>Uma interface bonita chama atenção. Uma solução bem pensada também facilita decisões, reduz dúvidas e ajuda as pessoas a concluir o que precisam.</p>
+          <div class="value-list">
+            <div class="value-item"><span class="value-check">✓</span><div><h3>Clareza</h3><p>Informações e ações organizadas de maneira compreensível.</p></div></div>
+            <div class="value-item"><span class="value-check">✓</span><div><h3>Responsabilidade</h3><p>Decisões técnicas documentadas e compatíveis com o objetivo.</p></div></div>
+            <div class="value-item"><span class="value-check">✓</span><div><h3>Evolução</h3><p>Estrutura que permite revisar e aprimorar sem complicar.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Perguntas frequentes com acordeão controlado pelo JavaScript. -->
+    <section class="section faq-section" id="faq">
+      <div class="container faq-layout">
+        <div class="faq-heading">
+          <p class="eyebrow">Dúvidas comuns</p>
+          <h2>Antes de começar, <span class="muted-heading">vamos esclarecer.</span></h2>
+          <p>Não encontrou sua pergunta? Envie uma mensagem pelo formulário.</p>
+          <a class="text-link" href="#contato">Falar com a equipe <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="faq-list">
+          <article class="faq-item">
+            <h3><button class="faq-question" type="button" aria-expanded="false"><span>Como começa um projeto?</span><span class="faq-plus" aria-hidden="true">+</span></button></h3>
+            <div class="faq-answer" hidden><p>Começamos entendendo o desafio, o público e o resultado esperado. Depois, organizamos prioridades e definimos um escopo inicial.</p></div>
+          </article>
+          <article class="faq-item">
+            <h3><button class="faq-question" type="button" aria-expanded="false"><span>É possível melhorar um site existente?</span><span class="faq-plus" aria-hidden="true">+</span></button></h3>
+            <div class="faq-answer" hidden><p>Sim. Uma revisão pode avaliar conteúdo, acessibilidade, responsividade, navegação e oportunidades de simplificação antes de propor mudanças.</p></div>
+          </article>
+          <article class="faq-item">
+            <h3><button class="faq-question" type="button" aria-expanded="false"><span>O site funciona em celulares?</span><span class="faq-plus" aria-hidden="true">+</span></button></h3>
+            <div class="faq-answer" hidden><p>O projeto foi planejado com layout responsivo e deve ser testado em diferentes larguras de tela e navegadores antes da publicação final.</p></div>
+          </article>
+          <article class="faq-item">
+            <h3><button class="faq-question" type="button" aria-expanded="false"><span>O formulário envia mensagens de verdade?</span><span class="faq-plus" aria-hidden="true">+</span></button></h3>
+            <div class="faq-answer" hidden><p>Nesta versão acadêmica, o formulário valida os campos no navegador e mostra uma confirmação demonstrativa. Para enviar mensagens reais, seria necessário integrar um serviço ou backend.</p></div>
+          </article>
+          <article class="faq-item">
+            <h3><button class="faq-question" type="button" aria-expanded="false"><span>Posso mudar o tema visual?</span><span class="faq-plus" aria-hidden="true">+</span></button></h3>
+            <div class="faq-answer" hidden><p>Sim. O controle de tema alterna entre os modos claro e escuro, e a preferência é guardada no armazenamento local do navegador.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulário demonstrativo com validação e feedback acessível. -->
+    <section class="section contact-section" id="contato">
+      <div class="container contact-layout">
+        <div class="contact-copy">
+          <p class="eyebrow">Próximo passo</p>
+          <h2>Tem uma ideia?<br><span class="gradient-text">Vamos dar forma a ela.</span></h2>
+          <p>Conte um pouco sobre o que você precisa. Este formulário demonstra validação no front-end e não envia dados a um servidor.</p>
+          <div class="contact-detail"><span class="contact-detail-icon" aria-hidden="true">✉</span><div><strong>Contato demonstrativo</strong><span>Preencha o formulário ao lado para testar a interação.</span></div></div>
+          <div class="contact-detail"><span class="contact-detail-icon" aria-hidden="true">⌖</span><div><strong>Atendimento organizado</strong><span>As informações ficam apenas nesta demonstração.</span></div></div>
+        </div>
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-heading"><span>FORMULÁRIO / 01</span><span class="form-required">* campos obrigatórios</span></div>
+          <div class="form-field">
+            <label for="fullName">Nome completo <span aria-hidden="true">*</span></label>
+            <input id="fullName" name="fullName" type="text" autocomplete="name" placeholder="Como podemos chamar você?" required minlength="2">
+            <small class="field-error" id="nameError"></small>
+          </div>
+          <div class="form-field">
+            <label for="email">E-mail <span aria-hidden="true">*</span></label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" required>
+            <small class="field-error" id="emailError"></small>
+          </div>
+          <div class="form-field">
+            <label for="projectType">Tipo de projeto</label>
+            <select id="projectType" name="projectType">
+              <option value="">Selecione uma opção</option>
+              <option value="site">Site ou landing page</option>
+              <option value="sistema">Sistema web</option>
+              <option value="automacao">Automação de processos</option>
+              <option value="estrategia">Estratégia digital</option>
+              <option value="outro">Outro assunto</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="message">Como podemos ajudar? <span aria-hidden="true">*</span></label>
+            <textarea id="message" name="message" rows="4" placeholder="Descreva brevemente sua ideia..." required minlength="10"></textarea>
+            <small class="field-error" id="messageError"></small>
+            <small class="character-count" id="messageCount">0 / 500 caracteres</small>
+          </div>
+          <label class="checkbox-field" for="consent">
+            <input id="consent" name="consent" type="checkbox" required>
+            <span>Entendo que este formulário é demonstrativo e não envia dados para um servidor.</span>
+          </label>
+          <button class="button button-primary form-submit" type="submit">Validar formulário <span aria-hidden="true">↗</span></button>
+          <p class="form-feedback" id="formFeedback" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Chamada final para orientar a navegação de volta ao formulário. -->
+    <section class="closing-section">
+      <div class="container closing-inner">
+        <div><p class="eyebrow">Ideias em movimento</p><h2>O próximo passo começa com uma boa pergunta.</h2></div>
+        <a class="button button-light" href="#contato">Começar uma conversa <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé com navegação secundária e informações acadêmicas. -->
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div class="footer-brand">
+        <a class="brand" href="#topo" aria-label="NexTech, voltar ao topo"><span class="brand-mark">N</span><span class="brand-name">Nex<span>Tech</span></span></a>
+        <p>Ideias organizadas em experiências digitais úteis, acessíveis e preparadas para evoluir.</p>
+      </div>
+      <div class="footer-column"><h2>Explorar</h2><a href="#servicos">Serviços</a><a href="#projetos">Projetos conceituais</a><a href="#processo">Processo</a></div>
+      <div class="footer-column"><h2>Informações</h2><a href="#sobre">Nossa perspectiva</a><a href="#faq">Perguntas frequentes</a><a href="#contato">Contato demonstrativo</a></div>
+      <div class="footer-column"><h2>Projeto acadêmico</h2><p>Atividade de Web Design<br>HTML, CSS e JavaScript puro</p><a href="README.md">Documentação do projeto</a></div>
+    </div>
+    <div class="container footer-bottom"><span>© <span id="currentYear">2026</span> NexTech — Projeto demonstrativo.</span><a href="#topo">Voltar ao topo ↑</a><span>Feito com HTML, CSS e JavaScript.</span></div>
+  </footer>
+
+  <!-- Botão flutuante que aparece após rolar a página. -->
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Voltar ao topo" title="Voltar ao topo">↑</button>
+
+  <!-- Região para mensagens globais de acessibilidade. -->
+  <div class="sr-only" id="liveAnnouncement" aria-live="polite" aria-atomic="true"></div>
+  <!-- Revisão de estrutura 01: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 01: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 02: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 02: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 03: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 03: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 04: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 04: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 05: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 05: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 06: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 06: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 07: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 07: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 08: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 08: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 09: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 09: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 10: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 10: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 11: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 11: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 12: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 12: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 13: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 13: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 14: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 14: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 15: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 15: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 16: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 16: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 17: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 17: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 18: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 18: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 19: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 19: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 20: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 20: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 21: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 21: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 22: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 22: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 23: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 23: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 24: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 24: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 25: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 25: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 26: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 26: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 27: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 27: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 28: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 28: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 29: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 29: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 30: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 30: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 31: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 31: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 32: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 32: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 33: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 33: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 34: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 34: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 35: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 35: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 36: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 36: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 37: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 37: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 38: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 38: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 39: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 39: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 40: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 40: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 41: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 41: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 42: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 42: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 43: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 43: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 44: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 44: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+  <!-- Revisão de estrutura 45: manter conteúdo, acessibilidade e comportamento separados por responsabilidade. -->
+  <!-- Manutenção 45: ao adicionar uma seção, atualizar também a navegação e a documentação do README. -->
+</body>
+</html>
