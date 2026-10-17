@@ -651,3 +651,40 @@ textarea:focus-visible,
 select:focus-visible {
   scroll-margin-block: 1rem;
 }
+
+/* Impressao: prioriza conteudo e economiza tinta */
+@media print {
+  body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  .site-header,
+  .menu-toggle,
+  .back-to-top,
+  button,
+  form,
+  .skip-link {
+    display: none !important;
+  }
+
+  main,
+  section,
+  .container {
+    width: 100% !important;
+    max-width: none !important;
+    box-shadow: none !important;
+    color: #111 !important;
+    background: #fff !important;
+  }
+
+  a {
+    color: #111 !important;
+    text-decoration: underline;
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
